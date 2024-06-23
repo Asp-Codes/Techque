@@ -1,9 +1,14 @@
 import React from "react";
-
-
-function Homepage(){
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+const  Homepage=()=>{
     return(
-            <h1>This is Homepage</h1>
+        <div className="w-full flex flex-col justify-center">
+         <Navbar/>
+         <Hero />
+        </div>
+         
+
     );
 }
 
