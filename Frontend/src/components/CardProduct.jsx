@@ -1,7 +1,7 @@
 import React from "react";
 import IndiviCard from "./indiviCard";
 
-const cardProduct =()=>{
+const CardProduct =()=>{
     const numberOfCards = 7;
     return(
         <div className="w-full  p-6 border-dashed border-b-2">
@@ -20,4 +20,4 @@ const cardProduct =()=>{
     );
 }
 
-export default cardProduct;
+export default CardProduct;
