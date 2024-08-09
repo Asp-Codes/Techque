@@ -26,3 +26,17 @@ CREATE TABLE order_records(
   food_id INTEGER REFERENCES food_item(id),
   PRIMARY KEY (order_id, food_id)
 );
+
+-- Creating cart table --
+CREATE TABLE cart(
+	customer_id INTEGER REFERENCES customer(id),
+	PRIMARY KEY(customer_id)
+);
+
+-- Creating cart_items table --
+CREATE TABLE cart_items(
+  cart_id INTEGER REFERENCES cart(customer_id) ON DELETE CASCADE,
+  food_id INTEGER REFERENCES food_item(id),
+  quantity INTEGER DEFAULT 1,
+  PRIMARY KEY (cart_id, food_id)
+);

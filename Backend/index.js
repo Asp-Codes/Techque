@@ -4,23 +4,21 @@ import pg from "pg";
 import cors from "cors";
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(cors());
 
 const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: "food",
-  password: "pushan",
-  port: 5432,
+  user: process.env.dbUser,
+  host: process.env.dbHost,
+  database: process.env.db,
+  password: process.env.dbPassword,
+  port: process.env.dbPort,
 });
+
 db.connect();
-
-
-
 
 
 
