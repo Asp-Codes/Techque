@@ -21,3 +21,8 @@ const indiviCard=()=>{
 }
 
 export default indiviCard;
+
+
+
+
+

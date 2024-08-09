@@ -2,7 +2,7 @@ import React from "react";
 import {IoLocationOutline } from "react-icons/io5";
 import { IoHeart } from "react-icons/io5";
 import { GiCookingPot } from "react-icons/gi";
-import CardProduct from "./cardProduct";
+import CardProduct from "./CardProduct";
 
 
 const Hero=()=>{
@@ -84,11 +84,11 @@ const Hero=()=>{
             <div className="w-full flex justify-center my-4 px-4 ">
             <div className="w-full max-w-screen-xl px-4">
                   <CardProduct />
-                  <CardProduct />
+                  <CardProduct  />
               </div>
               </div>
               
-
+          
          </>
     );
 }
