@@ -1,24 +1,25 @@
 import express from "express";
 import bodyParser from "body-parser";
-import pg from "pg";
 import cors from "cors";
+import register from './routes/register.js'; // Import the auth routes module
+import login from './routes/login.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+
 
 const app = express();
-const port = process.env.PORT;
+const port = 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(cors());
 
-const db = new pg.Client({
-  user: process.env.dbUser,
-  host: process.env.dbHost,
-  database: process.env.db,
-  password: process.env.dbPassword,
-  port: process.env.dbPort,
-});
+app.use('/', register); // register route for both get and post methods
 
-db.connect();
+app.use('/', login); // login route for both get and post methods
+
 
 
 

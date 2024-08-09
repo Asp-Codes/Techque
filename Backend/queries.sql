@@ -5,6 +5,11 @@ CREATE TABLE customer(
 	last_name TEXT
 );
 
+ALTER TABLE customer
+ADD COLUMN email TEXT,
+ADD COLUMN password TEXT;
+
+
 --creating food item database --
 CREATE TABLE food_item(
 	id SERIAL PRIMARY KEY,

@@ -1,12 +1,15 @@
-// dbConnection.mjs
 import pg from 'pg';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 
 const db = new pg.Client({
-  user: process.env.dbUser,
-  host: process.env.dbHost,
-  database: process.env.db,
-  password: process.env.dbPassword,
-  port: process.env.dbPort,
+  user: "postgres",
+  host: "localhost",
+  database: "food",
+  password: "pushan",
+  port: 5432,
 });
 
 db.connect().catch(err => {
