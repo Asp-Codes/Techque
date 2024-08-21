@@ -3,6 +3,7 @@ import {IoLocationOutline } from "react-icons/io5";
 import { IoHeart } from "react-icons/io5";
 import { GiCookingPot } from "react-icons/gi";
 import CardProduct from "./CardProduct";
+import { Link, Element } from 'react-scroll';
 
 
 const Hero=()=>{
@@ -83,8 +84,23 @@ const Hero=()=>{
         
             <div className="w-full flex justify-center my-4 px-4 ">
             <div className="w-full max-w-screen-xl px-4">
+              <div>
+              <ul>
+          <li>
+            <button><Link to="section1" smooth={true} duration={500}>Section 1</Link></button>
+          </li>
+          <li>
+          <button><Link to="section2" smooth={true} duration={500}>Section 2</Link></button>
+          </li>
+          {/* Add more navigation links as needed */}
+        </ul>
+              </div>
+              <Element name="section1">
                   <CardProduct />
-                  <CardProduct  />
+              </Element>
+              <Element name="section2">
+                  <CardProduct />
+              </Element>
               </div>
               </div>
               
