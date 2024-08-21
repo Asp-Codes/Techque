@@ -1,7 +1,11 @@
 import React from "react";
+import { FaUser } from "react-icons/fa";
+import { FiShoppingBag } from "react-icons/fi";
+import { PiShoppingCartLight } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
 
 function Navbar(){
-
+ const navigate=useNavigate();
  return (
     <nav class="bg-white border-b py-1">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -43,9 +47,13 @@ function Navbar(){
           </div>
           <input type="text" id="search-navbar" class="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..."></input>
         </div>
-
+        
         
       </div>
+      <button onClick={() => navigate('/cart')}><FiShoppingBag  size={24}/></button>
+      <button onClick={() => navigate('/account')}><FaUser size={24} /></button>
+      
+
     </div>
   </nav>
 );
