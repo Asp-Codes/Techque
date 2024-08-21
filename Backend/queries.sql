@@ -5,6 +5,8 @@ CREATE TABLE customer(
 	last_name TEXT
 );
 
+--customer table updated --
+
 ALTER TABLE customer
 ADD COLUMN email TEXT,
 ADD COLUMN password TEXT;

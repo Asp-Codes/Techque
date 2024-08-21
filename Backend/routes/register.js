@@ -1,18 +1,22 @@
 import express from 'express';
 import db from '../config/dbConnection.js';
 
+
+
 const router = express.Router();
 
-
 router.get("/register", (req, res) => {
-    res.render("register.ejs"); // render registeration form
+    res.render("register.ejs"); //render registeration form
 });
 
 
   
 router.post("/register", async (req, res) => {
-    const email = req.body.username;
+    const email = req.body.email;
     const password = req.body.password;
+
+    console.log("Email:", email);
+    console.log("Password:", password);
 
     try {
         const checkResult = await db.query("SELECT * FROM customer WHERE email = $1", [

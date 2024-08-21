@@ -1,6 +1,7 @@
 import express from 'express';
 import db from '../config/dbConnection.js';
 
+
 const router = express.Router();
 
 router.get('/login', (req, res) => {
@@ -8,7 +9,7 @@ router.get('/login', (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-  const email = req.body.username;
+  const email = req.body.email;
   const password = req.body.password;
 
   try {
@@ -19,6 +20,7 @@ router.post('/login', async (req, res) => {
 
       if (password === storedPassword) {
         // render information to be shown when user login
+        res.send('login done bro');
       } else {
         // incorrect password
         res.send('Incorrect Password');

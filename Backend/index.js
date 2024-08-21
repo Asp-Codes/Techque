@@ -3,10 +3,6 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import register from './routes/register.js'; // Import the auth routes module
 import login from './routes/login.js';
-import dotenv from 'dotenv';
-
-dotenv.config();
-
 
 
 const app = express();
