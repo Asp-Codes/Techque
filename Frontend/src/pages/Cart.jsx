@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import Modal from "../components/Modal";
 
 
 const Cart=()=>{
@@ -44,8 +45,25 @@ const Cart=()=>{
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col w-1/3 border border-gray-200 ml-1">
-               
+                <div className="flex flex-col w-1/3 border border-gray-200 ml-1 py-4">
+                    <div className="flex justify-between mx-6">
+                        <p>Item Total</p>
+                        <p>$ 100</p>
+                    </div>
+                    <div className="flex justify-between mx-6">
+                        <p>Taxes</p>
+                        <p>$ 1</p>
+                    </div>
+                    <div className="flex justify-between mt-2 mx-6 border-t-2 border-dashed border-gray-300 pt-2">
+                        <p className="text-xl font-semibold">Item Total</p>
+                        <p className="text-md font-semibold">$ 101</p>
+                    </div>
+                    <div className="flex justify-start mx-6 mt-1">
+                        <p className="font-light">Inclusive of all taxes</p>
+                    </div>
+                    <div className="flex justify-between mt-2 border-t border-gray-300">
+                            <Modal />
+                    </div>
                 </div>
             </div>
 
