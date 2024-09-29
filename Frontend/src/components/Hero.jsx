@@ -84,16 +84,13 @@ const Hero=()=>{
         
             <div className="w-full flex justify-center my-4 px-4 ">
             <div className="w-full max-w-screen-xl px-4">
-              <div>
-              <ul>
-          <li>
-            <button><Link to="section1" smooth={true} duration={500}>Section 1</Link></button>
-          </li>
-          <li>
-          <button><Link to="section2" smooth={true} duration={500}>Section 2</Link></button>
-          </li>
+              <div className="w-full flex flex-wrap justify-center">
+              
+            <button class="mx-2 mt-4 bg-blue-100 hover:bg-blue-400  border border-blue-500 text-blue-500  hover:text-white font-bold py-2 px-4  rounded-sm"><Link to="section1" smooth={true} duration={500}>Section 1</Link></button>
+        
+            <button class="mx-2 mt-4 bg-blue-100 hover:bg-blue-400  border border-blue-500 text-blue-500  hover:text-white font-bold py-2 px-4  rounded-sm"><Link to="section2" smooth={true} duration={500}>Section 2</Link></button>
           {/* Add more navigation links as needed */}
-        </ul>
+        
               </div>
               <Element name="section1">
                   <CardProduct />
