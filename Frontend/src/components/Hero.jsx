@@ -5,8 +5,61 @@ import { GiCookingPot } from "react-icons/gi";
 import CardProduct from "./CardProduct";
 import { Link, Element } from 'react-scroll';
 
+import { useState,useEffect } from "react";
 
 const Hero=()=>{
+
+  const [menus, setMenus] = useState([]); // State to store the fetched menus
+    const [loading, setLoading] = useState(true) // State to manage loading status
+    const [error, setError] = useState(null); // State to handle errors
+    const [menuItems, setMenuItems] = useState([]);
+    const [currOrder, setcurrOrder] = useState(0);
+    const [totalOrder,settotalOrder] = useState(0);
+
+  useEffect(() => {
+    const fetchMenus = async () => {
+        try {
+            const response = await fetch('http://localhost:8000/menus');
+            if (!response.ok) {
+                throw new Error('Failed to fetch menus');
+            }
+            const data = await response.json();
+            setMenus(data); // Update state with the fetched menus
+
+            // Fetch menu items for each menu
+        } catch (err) {
+            setError(err.message); // Handle error
+        } finally {
+            setLoading(false); // Set loading to false after fetching
+        }
+    };
+    fetchMenus();
+    // console.log(menus);
+}, []);
+
+
+ useEffect(()=>{
+
+    const fetchOrderStats = async () =>{
+       try {
+        const id="67160abe55a2616c7124bb35";
+        const response = await fetch(`http://localhost:8000/orders/queue/${id}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch orders');
+        }
+        const data = await response.json();
+        setcurrOrder(data.current_order);
+        settotalOrder(data.total_orders);
+        console.log(data);
+       }
+        catch(err){
+            setError(err.message);
+        }
+    }
+    fetchOrderStats();
+ },[currOrder,totalOrder]);
+
+
     return(
         <>
         <div className="w-full flex justify-center"> 
@@ -53,13 +106,13 @@ const Hero=()=>{
 
                 <div className="w-2/4 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-lg h-56 mr-2 flex flex-col items-center justify-evenly shadow-xl overflow-hidden pb-4" >
                {/* //glossy feel */}
-                <p className="font-serif text-gray-100 p-1 px-2 rounded-lg text-2xl underline-offset-4 underline">Ready to serve</p>
-                <p className="font-serif text-white p-1 px-2 rounded-lg font-bold text-5xl">69</p>
+                <p className="font-serif text-gray-100 p-1 px-2 rounded-lg text-2xl underline-offset-4 underline">Order Being Prepared</p>
+                <p className="font-serif text-white p-1 px-2 rounded-lg font-bold text-5xl">{currOrder}</p>
                 </div>
 
                 <div className="w-2/4 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-lg h-56 mr-2 flex flex-col items-center justify-evenly shadow-xl pb-4" >
                 <p className="font-serif text-gray-100 p-1 px-2 rounded-lg text-2xl underline-offset-4 underline">Get into at</p>
-                <p className="font-serif text-white p-1 px-2 rounded-lg font-bold text-5xl">96</p>
+                <p className="font-serif text-white p-1 px-2 rounded-lg font-bold text-5xl">{totalOrder}</p>
                 </div>
                
               </div>
@@ -85,21 +138,27 @@ const Hero=()=>{
             <div className="w-full flex justify-center my-4 px-4 ">
             <div className="w-full max-w-screen-xl px-4">
               <div className="w-full flex flex-wrap justify-center">
+
+
+              <>
+              {menus.map(menu => (
+                <button key={menu.menu_id} class="mx-2 mt-4 bg-blue-100 hover:bg-blue-400  border border-blue-500 text-blue-500  hover:text-white font-bold py-2 px-4  rounded-sm"><Link to="section1" smooth={true} duration={500}>{menu.category}</Link></button>
+              ))}
+              </>
+        
+              </div>
+
+            <>
+              {menus.map(menu => (
+                <Element key={menu.menu_id} name={menu.category}>
+                <CardProduct value={menu} />
+                </Element>
+              ))}
+              </>
               
-            <button class="mx-2 mt-4 bg-blue-100 hover:bg-blue-400  border border-blue-500 text-blue-500  hover:text-white font-bold py-2 px-4  rounded-sm"><Link to="section1" smooth={true} duration={500}>Section 1</Link></button>
-        
-            <button class="mx-2 mt-4 bg-blue-100 hover:bg-blue-400  border border-blue-500 text-blue-500  hover:text-white font-bold py-2 px-4  rounded-sm"><Link to="section2" smooth={true} duration={500}>Section 2</Link></button>
-          {/* Add more navigation links as needed */}
-        
-              </div>
-              <Element name="section1">
-                  <CardProduct />
-              </Element>
-              <Element name="section2">
-                  <CardProduct />
-              </Element>
               </div>
               </div>
+
               
           
          </>
